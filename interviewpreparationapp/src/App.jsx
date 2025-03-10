@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Quiz from "./pages/Quiz";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+//import Dashboard from "./pages/Dashboard";
+//import PrivateRoute from "./components/PrivateRoute";
+import Result from "./pages/Result";
+import Bookmark from "./pages/Bookmark";
+import DiscussionForum from "./pages/DiscussionForum";
+import AIQuestionGenerator from "./pages/AIQuestionGenerator";
+import MockInterview from "./pages/MockInterview";
+import ProgressTracker from "./components/ProgressTracker"
+import QuestionCard from "./components/QuestionCard"
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Router>
+       <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/bookmark" element={<Bookmark />} />
+          <Route path="/discussion" element={<DiscussionForum />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/ai-questions" element={<AIQuestionGenerator />} />
+        <Route path="/mock-interview" element={<MockInterview />} />
+        <Route path="/progress-tracker" element={<ProgressTracker />} />
+        <Route path="/question-card" element={<QuestionCard />} />
+        </Routes>
+      </Router>
+  
+   
+  );
+};
 
-export default App
+export default App;
